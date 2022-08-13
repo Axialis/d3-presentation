@@ -86,11 +86,11 @@ d3.selectAll("selector");</code></pre>
 				HTML Elements control
 				<pre>
 					Add element:							
-					<code class="hljs less">d3.select("selector").append("item").text('Title');</code>
+					<code class="hljs less">d3.select("selector").append("item").text("Title");</code>
 				</pre>
 				<pre>
 					Remove element:							
-					<code class="hljs less">d3.select("selector").remove('item');</code>
+					<code class="hljs less">d3.select("selector").remove("item");</code>
 				</pre>
 			</section>
 
@@ -98,31 +98,31 @@ d3.selectAll("selector");</code></pre>
 			<section>
 				Data
 				<pre>					
-					<code class="hljs less">d3.blob('URL') //Get a file as a blob</code>
+					<code class="hljs less">d3.blob("URL") //Get a file as a blob</code>
 				</pre>
 				<pre>				
-					<code class="hljs less">d3.buffer('URL') //Get a file as an array buffer</code>
+					<code class="hljs less">d3.buffer("URL") //Get a file as an array buffer</code>
 				</pre>
 				<pre>							
-					<code class="hljs less">d3.csv('URL') //Get a comma-separated values (CSV) file:</code>
+					<code class="hljs less">d3.csv("URL") //Get a comma-separated values (CSV) file:</code>
 				</pre>
 				<pre>					
-					<code class="hljs less">d3.dsv('URL') //Get a delimiter-separated values (CSV) file</code>
+					<code class="hljs less">d3.dsv("URL") //Get a delimiter-separated values (CSV) file</code>
 				</pre>
 				<pre>			
-					<code class="hljs less">d3.html('URL') //Get an HTML file</code>
+					<code class="hljs less">d3.html("URL") //Get an HTML file</code>
 				</pre>
 				<pre>			
-					<code class="hljs less">d3.image('URL') //Get an image</code>
+					<code class="hljs less">d3.image("URL") //Get an image</code>
 				</pre>
 				<pre>			
-					<code class="hljs less">d3.json('URL') //Get a JSON file</code>
+					<code class="hljs less">d3.json("URL") //Get a JSON file</code>
 				</pre>
 				<pre>			
-					<code class="hljs less">d3.text('URL') //Get a plain text file</code>
+					<code class="hljs less">d3.text("URL") //Get a plain text file</code>
 				</pre>
 				<pre>			
-					<code class="hljs less">d3.xml('URL') //Get  an XML file.</code>
+					<code class="hljs less">d3.xml("URL") //Get  an XML file.</code>
 				</pre>
 			</section>
 
@@ -160,7 +160,7 @@ d3.selectAll("selector");</code></pre>
 					<pre>					
 						<code class="hljs less">const width = 500;
 const height = 500;
-const svg = d3.select('body')
+const svg = d3.select("body")
 		.append("svg")
 		.attr("width", width)
 		.attr("height", height);</code>
@@ -185,11 +185,11 @@ const arc = d3.arc()
 <section>
 	<pre>					
 		<code class="hljs less">const g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-const arcs = g.selectAll('arc')
+const arcs = g.selectAll("arc")
 		.data(pie(value))
 		.enter()
-		.append('g')
-		.attr('class', 'arc')
+		.append("g")
+		.attr("class", "arc')
 </code>
 </pre>
 </section>
@@ -198,7 +198,7 @@ const arcs = g.selectAll('arc')
 	<pre>					
 		<code class="hljs less">arcs.append("path")
 			.attr("fill", () => d3.interpolateRainbow(Math.random()))
-			.attr('d', arc);
+			.attr("d", arc);
 </code>
 </pre>
 </section>

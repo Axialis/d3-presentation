@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>D3</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/league.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<!----------------------------- slide 1 ------------------------------>
+
+				<section>
+					<img src="./assets/logo.svg" alt="logo D3">
+					<p>D3 Data-Driven Documents</p>
+				</section>
+
+<!----------------------------- slide 2 ------------------------------>
+
+				<section>
+					<p>Installation</p>
+					<pre><code data-trim data-noescape>
+						npm init
+						npm install --save d3
+					</code></pre>
+
+					<pre><code data-trim data-noescape>
+						d3.js for development
+						&lt;script
+						type="text/javascript"
+						src="node_modules/d3/dist/d3.js"&gt;
+						&lt;/script&gt;
+
+
+						d3.min.js for production
+						&lt;script 
+						type="text/javascript" 
+						src="node_modules/d3/dist/d3.min.js"&gt;
+						&lt;/script&gt;
+					</code></pre>
+				</section>
+
+<!----------------------------- slide 3 ------------------------------>
+
+				<section>
+					Selecting elements and operators
+					<section>
+						<pre><code data-trim data-noescape>d3.select("selector");
+d3.selectAll("selector");</code></pre>
+					</section>
+					<section>
+						<pre>
+							Set attribute of element:
+							<code class="hljs less">d3.select("selector").attr("class", "green")</code>
+						</pre>
+
+						<pre>
+							Set style of element:
+							<code class="hljs less">d3.select("selector").style("width", "120px")</code>
+						</pre>
+
+						<pre>
+							Set content of element: 				
+							<code class="hljs less">d3.select("selector").text("Text example")</code>
+						</pre>
+
+						<pre>
+							Set HTML-code of element:							
+							<code class="hljs less">d3.select("selector").html("<h1>Title</h1>")</code>
+						</pre>
+					</section>
+				</section>
+
+<!----------------------------- slide 4 ------------------------------>
+
+			<section>
+				HTML Elements control
+				<pre>
+					Add element:							
+					<code class="hljs less">d3.select("selector").append("item").text('Title');</code>
+				</pre>
+				<pre>
+					Remove element:							
+					<code class="hljs less">d3.select("selector").remove('item');</code>
+				</pre>
+			</section>
+
+<!----------------------------- slide 5 ------------------------------>
+			<section>
+				Data
+				<pre>					
+					<code class="hljs less">d3.blob('URL') //Get a file as a blob</code>
+				</pre>
+				<pre>				
+					<code class="hljs less">d3.buffer('URL') //Get a file as an array buffer</code>
+				</pre>
+				<pre>							
+					<code class="hljs less">d3.csv('URL') //Get a comma-separated values (CSV) file:</code>
+				</pre>
+				<pre>					
+					<code class="hljs less">d3.dsv('URL') //Get a delimiter-separated values (CSV) file</code>
+				</pre>
+				<pre>			
+					<code class="hljs less">d3.html('URL') //Get an HTML file</code>
+				</pre>
+				<pre>			
+					<code class="hljs less">d3.image('URL') //Get an image</code>
+				</pre>
+				<pre>			
+					<code class="hljs less">d3.json('URL') //Get a JSON file</code>
+				</pre>
+				<pre>			
+					<code class="hljs less">d3.text('URL') //Get a plain text file</code>
+				</pre>
+				<pre>			
+					<code class="hljs less">d3.xml('URL') //Get  an XML file.</code>
+				</pre>
+			</section>
+
+<!----------------------------- slide 5 ------------------------------>
+
+			<section>
+				Example:
+				<pre>			
+					<code class="hljs less">d3.json("https://axialis.github.io/json-kit/microjson.json")
+		.then((data) => console.log(data))</code>
+				</pre>
+				<pre>			
+					<code class="hljs">
+[
+	{
+		"name": "John",
+		"age": 30,
+		"city": "New York"
+	},
+	{
+		"name": "Jane",
+		"age": 25,
+		"city": "San Francisco"
+	}
+	...
+]
+
+					</code>
+				</pre>
+			</section>
+
+<!----------------------------- slide 5 ------------------------------>
+			<section>
+				<section>				
+					<pre>					
+						<code class="hljs less">const width = 500;
+const height = 500;
+const svg = d3.select('body')
+		.append("svg")
+		.attr("width", width)
+		.attr("height", height);</code>
+				</pre>
+			</section>
+<section>
+	<pre>					
+		<code class="hljs less">const radius = Math.min(width, height) / 2;
+const pie = d3.pie();
+const arc = d3.arc()
+		.innerRadius(0)
+    .outerRadius(radius);</code>
+</pre>
+</section>
+<section>
+	<pre>					
+		<code class="hljs less">const value = data.map((el) => {return el.age});
+</code>
+</pre>
+</section>
+
+<section>
+	<pre>					
+		<code class="hljs less">const g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+const arcs = g.selectAll('arc')
+		.data(pie(value))
+		.enter()
+		.append('g')
+		.attr('class', 'arc')
+</code>
+</pre>
+</section>
+
+<section>
+	<pre>					
+		<code class="hljs less">arcs.append("path")
+			.attr("fill", () => d3.interpolateRainbow(Math.random()))
+			.attr('d', arc);
+</code>
+</pre>
+</section>
+			</section>
+
+<!----------------------------- slide 6 ------------------------------>
+
+<section>
+	<img src="./assets/diagram.svg" alt="diagram">
+</section>
+
+<!----------------------------- slide 6 ------------------------------>
+
+<section>
+	Thank you for your attention!
+</section>
+
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

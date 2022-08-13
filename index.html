@@ -184,7 +184,9 @@ const arc = d3.arc()
 
 <section>
 	<pre>					
-		<code class="hljs less">const g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+		<code class="hljs less">const g = svg.append("g")
+		.attr("transform",
+		      "translate(" + width / 2 + "," + height / 2 + ")")
 const arcs = g.selectAll("arc")
 		.data(pie(value))
 		.enter()
